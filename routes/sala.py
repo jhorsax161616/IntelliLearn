@@ -12,7 +12,7 @@ sala = APIRouter()
 def get_salas():
     return conn.execute(salas.select()).fetchall()
 
-@sala.post("/estudiantes", response_model=Sala, tags=["estudiantes"])
+@sala.post("/salas", response_model=Sala, tags=["salas"])
 def create_sala(sala: Sala):
     # Creamos nuestro usuario como un diccionario para guardar los datos obtenidos
     nueva_sala = {"nombre": sala.nombre,

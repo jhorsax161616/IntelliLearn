@@ -1,6 +1,6 @@
 from pydantic import BaseModel
-from sqlalchemy import DateTime
 from typing import Optional
+from datetime import datetime
 
 class Sala(BaseModel):
     id: Optional[int]
@@ -8,6 +8,6 @@ class Sala(BaseModel):
     descripcion: str
     url_sala: str
     url_imagen: str
-    horario: DateTime
+    horario: datetime
     curso_id: int
     estudiante_id: int

@@ -1,5 +1,9 @@
 from fastapi import FastAPI
 from routes.estudiante import estudiante
+from routes.sala import sala
+from routes.estudiante_sala import estudiante_sala
+from routes.curso import curso
+from routes.universidad import universidad
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.requests import Request
@@ -16,7 +20,11 @@ app = FastAPI(
     ]
 )
 
+app.include_router(universidad)
 app.include_router(estudiante)
+app.include_router(curso)
+app.include_router(sala)
+app.include_router(estudiante_sala)
 
 templates = Jinja2Templates(directory="templates")
 # Montar el directorio de archivos estáticos
