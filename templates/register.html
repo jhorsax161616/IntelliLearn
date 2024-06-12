@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro IntelliLearn</title>
+    <link rel="stylesheet" href="/assets/styles/register.css">
+</head>
+<body>
+    <div class="contenedor-principal">
+        <header>
+            <div class="contenLogo">
+                <img src="/assets/icons/logo.svg" alt="Logo de IntelliLearn">
+            <h1>Registrate</h1>
+            <p>Podrá comenzar tan pronto como se registre.</p>
+        </header>
+        
+        <div class="formulario-registro">
+            <button class="boton-google">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png" alt="Google" class="logo-google"> Google
+            </button>
+            
+            <hr>
+            
+            <form action="/estudiantes" method="post">
+                <div class="campo">
+                    <label for="nombres">Nombres</label>
+                    <input type="text" id="nombre" name="nombre" value="Nombre">
+                </div>
+
+                <div class="campo">
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" id="apellidos" name="apellidos" value="Apellidos">
+                </div>
+                
+                <div class="campo">
+                    <label for="correo">Correo Electrónico</label>
+                    <input type="correo" id="correo" name="correo" value="jhim123@gmail.com">
+                </div>
+
+                <div class="campo">
+                    <label for="universidad">Universidad</label>
+                    <select id="universidad" name="universidad">
+                        <option value="universidad-continental">Universidad Continental</option>
+                        <option value="upla">UPLA</option>
+                        <option value="uncp">UNCP</option>
+                        <option value="rooselvelt">Rooselvelt</option>
+                        <option value="utp">UTP</option>
+                    </select>
+                </div>  
+                
+                <div class="campo">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password">
+                    <a href="#" class="mostrar-contrasena">Mostrar</a>
+                </div>
+                <button type="submit" class="boton-crear-cuenta">Registrarse</button>
+            </form>
+            
+            <div class="iniciar-sesion">
+                <p>¿Ya tiene una cuenta? <a href="login.html" class="enlace-iniciar">Iniciar Sesión</a></p>
+            </div>
+        </div>
+        
+        <aside class="imagen-ilustracion">
+            <img src="/assets/img/img_register.png" alt="Ilustración de registro">
+        </aside>
+    </div>
+</body>
+</html>

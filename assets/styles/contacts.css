@@ -1,0 +1,147 @@
+/* Reset some default browser styles */
+body, h1, p, form, div, label, input, textarea, button, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.contenedor-contacto {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+header {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.resaltar {
+    color: #6a0dad;
+}
+
+p {
+    font-size: 14px;
+    color: #666;
+}
+
+.formulario-contacto {
+    flex: 1;
+    max-width: 500px;
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+input[type="text"], input[type="email"], textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    color: #666;
+}
+
+textarea {
+    resize: none;
+}
+
+.boton-enviar {
+    padding: 10px;
+    background-color: #6a0dad;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.informacion-contacto {
+    flex: 1;
+    max-width: 400px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.informacion-contacto img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.informacion-contacto p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.icono-direccion::before, .icono-telefono::before, .icono-email::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-size: contain;
+    vertical-align: middle;
+}
+
+.icono-direccion::before {
+    background-image: url('path/to/direccion-icon.png');
+}
+
+.icono-telefono::before {
+    background-image: url('path/to/telefono-icon.png');
+}
+
+.icono-email::before {
+    background-image: url('path/to/email-icon.png');
+}
+
+.redes-sociales {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.redes-sociales a {
+    width: 30px;
+    height: 30px;
+    display: block;
+    background-size: cover;
+}
+
+.icono-facebook {
+    background-image: url('path/to/facebook-icon.png');
+}
+
+.icono-twitter {
+    background-image: url('path/to/twitter-icon.png');
+}
+
+.icono-linkedin {
+    background-image: url('path/to/linkedin-icon.png');
+}

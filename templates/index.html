@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="/assets/styles/index.css">
     <title>IntelliLearn</title>
 </head>
 <body>
     <header class="header">
         <section class="left-header">
-            <img src="assets/icons/logo.svg" alt="Logo de IntelliLearn">
+            <img src="/assets/icons/logo.svg" alt="Logo de IntelliLearn">
             <h1 class="">IntelliLearn</h1>
             <nav>
                 <ul>
@@ -20,15 +20,33 @@
             </nav>
         </section>
         <section class="right-header">
-            <nav>
-                <ul>
-                    <li class="btn-SingUp"><a href="registro.html">Sing Up</a></li>
-                    <li class="btn-login">
-                        <a href="login.html">Login</a>
-                        <img src="assets/icons/user.png" alt="Icono de iniciar sesion">
-                    </li>
-                </ul>
-            </nav>
+            {% if is_logued %}
+                        <nav>
+                            <ul>
+                                <li class="btn-login">
+                                    <a href="#">Cerrar Sesión</a>
+                                    <img src="/assets/icons/estudiante.png" alt="Icono de iniciar sesion">
+                                </li>
+                                <li>
+                                    {{ estudiante.name }}
+                                </li>
+                                <li>
+                                    <img src="{{ estudiante.avatar }}" alt="Avatar de usuario">
+                                </li>
+                            </ul>
+                        </nav>
+                    {% else %}
+                        <nav>
+                            <ul>
+                                <li class="btn-SingUp"><a href="/register">Registrarse</a></li>
+                                <li class="btn-login">
+                                    <a href="/login">Iniciar Sesión</a>
+                                    <img src="/assets/icons/estudiante.png" alt="Icono de iniciar sesion">
+                                </li>
+                            </ul>
+                        </nav>
+            {% endif %}
+        </section>
     </header>
     <body class="body">
         <section class="body-principal">
@@ -42,12 +60,12 @@
                 <div class="principal-footer">
                     <button class="btn-join">Empieza Ahora  ></button>
                     <div>
-                        <img src="assets/img/arrow.png" alt="Icono de flecha">
+                        <img src="/assets/img/arrow.png" alt="Icono de flecha">
                     </div>
                 </div>
             </section>
             <section class="principal-imagen">
-                <img src="assets/img/estudianteBody.png" alt="Imagen de estudiante">
+                <img src="/assets/img/estudianteBody.png" alt="Imagen de estudiante">
             </section>
         </section>
         <section class="body-inf">
@@ -59,36 +77,36 @@
             </section>
             <section class="inf-beneficios">
                 <div class="inf-beneficios-1">
-                    <img src="assets/img/beneficio1.png" alt="Icono de estudiante">
+                    <img src="/assets/img/beneficio1.png" alt="Icono de estudiante">
                     <h3>Organización Eficiente</h3>
                 </div>
                 <div class="inf-beneficios-2">
-                    <img src="assets/img/beneficio2.png" alt="Icono de estudiante">
+                    <img src="/assets/img/beneficio2.png" alt="Icono de estudiante">
                     <h3>Acceso a Recursos</h3>
                 </div>
                 <div class="inf-beneficios-3">
-                    <img src="assets/img/beneficio3.png" alt="Icono de estudiante">
+                    <img src="/assets/img/beneficio3.png" alt="Icono de estudiante">
                     <h3>Comunicación en Tiempo Real</h3>
                 </div>
                 <div class="inf-beneficios-4">
-                    <img src="assets/img/beneficio4.png" alt="Icono de estudiante">
+                    <img src="/assets/img/beneficio4.png" alt="Icono de estudiante">
                     <h3>Mejora del Rendimiento Académico</h3>
                 </div>
                 <div class="inf-beneficios-5">
-                    <img src="assets/img/beneficio5.png" alt="Icono de estudiante">
+                    <img src="/assets/img/beneficio5.png" alt="Icono de estudiante">
                     <h3>Notificaciones y Recordatorios</h3>
                 </div>
                 <div class="inf-beneficios-6">
-                    <img src="assets/img/beneficio6.png" alt="Icono de estudiante">
+                    <img src="/assets/img/beneficio6.png" alt="Icono de estudiante">
                     <h3>Seguridad y Privacidad</h3>
                 </div>
                 <div class="inf-beneficios-7">
-                    <img src="assets/img/beneficio7.png" alt="Icono de estudiante">
+                    <img src="/assets/img/beneficio7.png" alt="Icono de estudiante">
                     <h3>Intaerfaz Amigable</h3>
                 </div>
             </section>
             <section class="inf-creada">
-                <img src="assets/img/consiste.webp" alt="Imagen de estudiante">
+                <img src="/assets/img/consiste.webp" alt="Imagen de estudiante">
                 <div class="creada-right">
                     <h2>¿Para qué está creada la página IntelliLearn?</h2>
                     <p>
@@ -105,12 +123,12 @@
             <h2>Nuestros <span>Sponsors</span></h2>
             <p>En IntelliLearn, contamos con el apoyo invaluable de nuestros patrocinadores, quienes han sido fundamentales para el desarrollo y éxito de nuestra plataforma. Gracias a su colaboración, hemos podido crear un espacio educativo innovador y accesible para todos los estudiantes de la Universidad Continental. Nos enorgullece trabajar con organizaciones comprometidas con la educación y la tecnología, quienes comparten nuestra visión de facilitar el aprendizaje colaborativo y el acceso a recursos académicos de calidad.</p>
             <div class="sponsors">
-                <img src="assets/img/universidadcontinental.png" alt="Logo de sponsor">
-                <img src="assets/img/cisco.jpg" alt="Logo de sponsor">
-                <img src="assets/img/fundetec.jpg" alt="Logo de sponsor">
-                <img src="assets/img/globallearning.jpg" alt="Logo de sponsor">
-                <img src="assets/img/google.png" alt="Logo de sponsor">
-                <img src="assets/img/microsoft.jpg" alt="Logo de sponsor">
+                <img src="/assets/img/universidadcontinental.png" alt="Logo de sponsor">
+                <img src="/assets/img/cisco.jpg" alt="Logo de sponsor">
+                <img src="/assets/img/fundetec.jpg" alt="Logo de sponsor">
+                <img src="/assets/img/globallearning.jpg" alt="Logo de sponsor">
+                <img src="/assets/img/google.png" alt="Logo de sponsor">
+                <img src="/assets/img/microsoft.jpg" alt="Logo de sponsor">
             </div>
         </section>
         <section class="body-enterate">
@@ -131,7 +149,7 @@
                 </p>
             </div>
             <div class="footer-contenLogo">
-                <img src="assets/icons/logo.svg" alt="Logo de IntelliLearn">
+                <img src="/assets/icons/logo.svg" alt="Logo de IntelliLearn">
                 <h1>IntelliLearn</h1>
             </div>
         </section>
