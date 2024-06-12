@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Response, status
-from config.db import conn
+from config.database import conn
 from models.universidad import universidades
 from schemas.universidad import Universidad
 from starlette.status import HTTP_204_NO_CONTENT

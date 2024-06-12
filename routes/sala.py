@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Response, status
-from config.db import conn
+from config.database import conn
 from models.sala import salas
 from schemas.sala import Sala
 from starlette.status import HTTP_204_NO_CONTENT #Para poder enviar un estado 

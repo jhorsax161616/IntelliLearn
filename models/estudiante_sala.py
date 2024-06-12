@@ -1,8 +1,25 @@
-from sqlalchemy import Integer, Table, Column, String
-from config.db import meta, engine
+from sqlalchemy import Integer, ForeignKey, Column
+from sqlalchemy.orm import relationship
 
-estudiante_salas = Table("estudiante_salas", meta,
-    Column("estudiante_id", Integer, nullable=False),
-    Column("sala_id", Integer, nullable=False))
+from config.database import Base
 
-meta.create_all(engine)
+class Estudiante_Sala(Base):
+    __tablename__ = "estudiantes_salas"
+
+    estudiante_id = Column(Integer, ForeignKey("estudiantes.id"), primary_key=True)
+    sala_id = Column(Integer, ForeignKey("salas.id"), primary_key=True)
+
+    estudiante = relationship("Estudiante", back_populates="salas")
+    sala = relationship("Sala", back_populates="estudiantes")
+
+    def __repr__(self):
+        return f"<Estudiante_Sala {self.estudiante_id} {self.sala_id}>"
+
+    def __str__(self):
+        return f"{self.estudiante_id} {self.sala_id}"
+
+    def __json__(self):
+        return ["estudiante_id", "sala_id"]
+
+    def __json_relations__(self):
+        return ["estudiante", "sala"]

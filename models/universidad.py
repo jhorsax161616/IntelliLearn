@@ -1,10 +1,27 @@
-from sqlalchemy import Integer, Table, Column, String
-from config.db import meta, engine
+from sqlalchemy import Integer, Column, String
+from sqlalchemy.orm import relationship
 
-universidades = Table("universidades", meta,
-    Column("id", Integer, primary_key=True, index=True),
-    Column("nombre", String(250)),
-    Column("direccion", String(250)),
-    Column("correo", String(180), unique=True, index=True))
+from config.database import Base
 
-meta.create_all(engine)
+class Universidad(Base):
+    __tablename__ = "universidades"
+
+    id = Column(Integer, primary_key=True, index=True)
+    nombre = Column(String(250), nullable=False, unique=True)
+    direccion = Column(String(250))
+    correo = Column(String(180), unique=True, index=True)
+
+    cursos = relationship("Curso", back_populates="universidad")
+    estudiantes = relationship("Estudiante", back_populates="universidad")
+
+    def __repr__(self):
+        return f"<Universidad {self.nombre}>"
+    
+    def __str__(self):
+        return f"{self.nombre}"
+    
+    def __json__(self):
+        return ["id", "nombre", "direccion", "correo"]
+    
+    def __json_relations__(self):
+        return ["cursos", "estudiantes"]
