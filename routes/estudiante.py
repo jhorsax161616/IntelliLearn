@@ -20,7 +20,7 @@ def get_estudiantes():
 @estudiante.post("/estudiantes", response_model=Estudiante, tags=["estudiantes"])
 def create_estudiante(estudiante: Estudiante):
     # Creamos nuestro usuario como un diccionario para guardar los datos obtenidos
-    new_estudiante = {"nombres": estudiante.nombres, "apellidos": estudiante.apellidos, "correo": estudiante.correo, "universidad": estudiante.universidad}
+    new_estudiante = {"nombres": estudiante.nombres, "apellidos": estudiante.apellidos, "correo": estudiante.correo, "universidad_id": estudiante.universidad_id}
 
     # Se tiene que encriptar las contrasenas pero antes tenemos que cofificarlas en formatos como el utf-8
     new_estudiante["hashed_password"] = cifrado.encrypt(estudiante.hashed_password.encode("utf-8"))
@@ -55,5 +55,5 @@ def delete_estudiante(id: str):
 @estudiante.put("/estudiantes/{id}", response_model=Estudiante, tags=["estudiantes"])
 def update_estudiante(id: str, estudiante: Estudiante):
     conn.execute(estudiantes.update().values(nombres=estudiante.nombres, apellidos=estudiante.apellidos, correo=estudiante.correo,
-                universidad=estudiante.universidad, hashed_password=cifrado.encrypt(estudiante.hashed_password.encode("utf-8"))).where(estudiantes.c.id == id))
+                universidad_id=estudiante.universidad_id, hashed_password=cifrado.encrypt(estudiante.hashed_password.encode("utf-8"))).where(estudiantes.c.id == id))
     return conn.execute(estudiantes.select().where(estudiantes.c.id == id)).first()

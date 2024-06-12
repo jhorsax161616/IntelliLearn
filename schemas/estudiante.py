@@ -6,5 +6,5 @@ class Estudiante(BaseModel):
     nombres: str
     apellidos: str
     correo: str
-    universidad: str
+    universidad_id: int
     hashed_password: str

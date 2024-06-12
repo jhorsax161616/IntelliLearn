@@ -6,7 +6,7 @@ estudiantes = Table("estudiantes", meta,
     Column("nombres", String(180)),
     Column("apellidos", String(180)),
     Column("correo", String(180), unique=True, index=True),
-    Column("universidad", String(180)),
-    Column("hashed_password", String(180), nullable=True),)
+    Column("universidad_id", Integer),
+    Column("hashed_password", String(250), nullable=True),)
 
 meta.create_all(engine)
