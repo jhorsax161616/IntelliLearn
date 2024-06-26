@@ -8,6 +8,9 @@ from routes.universidad import universidad
 from routes.curso import curso
 from routes.sala import sala
 from routes.estudiante_sala import estudiante_sala
+from routes.estudiante_logica import estudiante_logica
+from routes.sala_logica import sala_logica
+
 from starlette.requests import Request
 
 from config.database import engine, Base
@@ -26,12 +29,13 @@ app = FastAPI(
     ]
 )
 
-app.include_router(universidad, tags=["Universidades"])
-app.include_router(estudiante, tags=["Estudiantes"])
-app.include_router(curso, tags=["Cursos"])
-app.include_router(sala, tags=["Salas"])
-app.include_router(estudiante_sala, tags=["Estudiantes en Salas"])
-
+app.include_router(universidad, tags=["Universidades - CRUD"])
+app.include_router(estudiante, tags=["Estudiantes - CRUD"])
+app.include_router(curso, tags=["Cursos - CRUD"])
+app.include_router(sala, tags=["Salas - CRUD"])
+app.include_router(estudiante_sala, tags=["Estudiantes en Salas - CRUD"])
+app.include_router(estudiante_logica, tags=["Lógica de Estudiantes"])
+app.include_router(sala_logica, tags=["Lógica de Salas"])
 
 templates = Jinja2Templates(directory="templates")
 # Montar el directorio de archivos estáticos
