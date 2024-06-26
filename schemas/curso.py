@@ -13,10 +13,8 @@ class CursoUpdate(CursoBase):
     nombre: Optional[str]
     descripcion: Optional[str]
 
-class Curso(CursoBase):
+class CursoInDB(CursoBase):
     id: Optional[int]
-    universidad: Optional[dict] = {}
-    salas: List[SalaBase] = []
 
     class Config:
         orm_mode = True

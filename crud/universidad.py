@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 
-from models import Universidad
+from models.Universidad import Universidad
 from schemas.universidad import UniversidadCreate, UniversidadUpdate
 
 def get_universidad(db: Session, id: int):

@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 
-from models import Sala
+from models.Sala import Sala
 from schemas.sala import SalaCreate, SalaUpdate
 
 def get_sala(db: Session, id: int):
@@ -9,8 +9,8 @@ def get_sala(db: Session, id: int):
 def get_salas(db: Session, skip: int = 0, limit: int = 100):
     return db.query(Sala).offset(skip).limit(limit).all()
 
-def get_sala_by_nombre(db: Session, nombre: str):
-    return db.query(Sala).filter(Sala.nombre == nombre).first()
+def get_salas_activas(db: Session):
+    return db.query(Sala).filter(Sala.is_active == True).all()
 
 def create_sala(db: Session, sala: SalaCreate):
     db_sala = Sala(**sala.dict())

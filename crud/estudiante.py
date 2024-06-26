@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 
-from models import Estudiante
+from models.Estudiante import Estudiante
 from schemas.estudiante import EstudianteCreate, EstudianteUpdate
 
 def get_estudiante(db: Session, id: int):

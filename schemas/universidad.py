@@ -16,10 +16,8 @@ class UniversidadUpdate(UniversidadBase):
     direccion: Optional[str]
     correo: Optional[str]
 
-class Universidad(UniversidadBase):
+class UniversidadInDB(UniversidadBase):
     id: Optional[int]
-    cursos: List[CursoBase] = []
-    estudiantes: List[EstudianteBase] = []
 
     class Config:
         orm_mode = True

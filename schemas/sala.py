@@ -9,6 +9,7 @@ class SalaBase(BaseModel):
     url_sala: str
     url_imagen: str
     horario: datetime
+    is_active: Optional[bool] = True
 
 class SalaCreate(SalaBase):
     curso_id: int
@@ -21,11 +22,8 @@ class SalaUpdate(SalaBase):
     url_imagen: Optional[str]
     horario: Optional[datetime]
 
-class Sala(SalaBase):
+class SalaInDB(SalaBase):
     id: Optional[int]
-    curso: Optional[dict] = {}
-    estudiante: Optional[dict] = {}
-    estudiantes_salas: List[Estudiante_SalaBase] = []
 
     class Config:
         orm_mode = True

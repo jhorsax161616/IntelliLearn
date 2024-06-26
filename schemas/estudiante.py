@@ -8,10 +8,9 @@ class EstudianteBase(BaseModel):
     apellidos: str
     correo: str
     universidad_id: int
-    hashed_password: Optional[str] = None
 
 class EstudianteCreate(EstudianteBase):
-    pass
+    hashed_password: Optional[str] = None
 
 class EstudianteUpdate(EstudianteBase):
     nombres: Optional[str]
@@ -20,11 +19,8 @@ class EstudianteUpdate(EstudianteBase):
     universidad_id: Optional[int]
     hashed_password: Optional[str]
 
-class Estudiante(EstudianteBase):
+class EstudianteInDB(EstudianteBase):
     id: Optional[int]
-    universidad: Optional[dict] = {}
-    salas: List[SalaBase] = []
-    estudiantes_salas: List[Estudiante_SalaBase] = []
 
     class Config:
         orm_mode = True

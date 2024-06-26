@@ -1,4 +1,4 @@
-from sqlalchemy import Integer, ForeignKey, Column, String, DateTime
+from sqlalchemy import Integer, ForeignKey, Column, String, DateTime, Boolean
 from sqlalchemy.orm import relationship
 
 from config.database import Base
@@ -12,6 +12,7 @@ class Sala(Base):
     url_sala = Column(String(250), nullable=False)
     url_imagen = Column(String(250))
     horario = Column(DateTime, nullable=False)
+    is_active = Column(Boolean, default=True)
     curso_id = Column(Integer, ForeignKey("cursos.id"), nullable=False)
     estudiante_id = Column(Integer, ForeignKey("estudiantes.id"), nullable=False)
 

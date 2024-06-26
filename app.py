@@ -3,10 +3,14 @@ from sqlalchemy.orm import Session
 
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from routes.estudiante import estudiante
+from routes.universidad import universidad
+from routes.curso import curso
+from routes.sala import sala
+from routes.estudiante_sala import estudiante_sala
 from starlette.requests import Request
 
-from config.database import SessionLocal, engine, Base
-from models import Universidad, Estudiante, Curso, Sala, Estudiante_Sala
+from config.database import engine, Base
 
 Base.metadata.create_all(bind=engine)
 
@@ -22,18 +26,12 @@ app = FastAPI(
     ]
 )
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-""" 
-app.include_router(universidad)
-app.include_router(estudiante)
-app.include_router(curso)
-app.include_router(sala)
-app.include_router(estudiante_sala) """
+app.include_router(universidad, tags=["Universidades"])
+app.include_router(estudiante, tags=["Estudiantes"])
+app.include_router(curso, tags=["Cursos"])
+app.include_router(sala, tags=["Salas"])
+app.include_router(estudiante_sala, tags=["Estudiantes en Salas"])
+
 
 templates = Jinja2Templates(directory="templates")
 # Montar el directorio de archivos estáticos

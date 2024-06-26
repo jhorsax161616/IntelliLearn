@@ -7,10 +7,10 @@ class Estudiante_Sala(Base):
     __tablename__ = "estudiantes_salas"
 
     estudiante_id = Column(Integer, ForeignKey("estudiantes.id"), primary_key=True)
-    sala_id = Column(Integer, ForeignKey("salas.id"), primary_key=True)
+    sala_id = Column(Integer, ForeignKey("salas.id"), primary_key=True )
 
-    estudiante = relationship("Estudiante", back_populates="salas")
-    sala = relationship("Sala", back_populates="estudiantes")
+    estudiante = relationship("Estudiante", back_populates="estudiantes_salas")
+    sala = relationship("Sala", back_populates="estudiantes_salas")
 
     def __repr__(self):
         return f"<Estudiante_Sala {self.estudiante_id} {self.sala_id}>"

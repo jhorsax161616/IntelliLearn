@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 
-from models import Curso
+from models.Curso import Curso
 from schemas.curso import CursoCreate, CursoUpdate
 
 def get_curso(db: Session, id: int):
