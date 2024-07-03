@@ -5,10 +5,7 @@ from config.database import get_db # Para poder obtener la base de datos
 from crud import estudiante as crud
 from schemas.estudiante import EstudianteCreate, EstudianteUpdate, EstudianteInDB
 
-from cryptography.fernet import Fernet  # para cifrar contraseñas
-
-key = Fernet.generate_key()  # Genera los caracteres aleatorios para el cifrado
-cifrado = Fernet(key)  # La funcion para cifrar
+from .login import pwd_context
 
 estudiante = APIRouter()
 
@@ -17,7 +14,7 @@ def create_estudiante(estudiante: EstudianteCreate, db: Session = Depends(get_db
     db_estudiante = crud.get_estudiante_by_correo(db, correo=estudiante.correo) 
     if db_estudiante:
         raise HTTPException(status_code=400, detail="El email ya está registrado")
-    estudiante.hashed_password = cifrado.encrypt(estudiante.hashed_password.encode('utf-8'))
+    estudiante.hashed_password = pwd_context.hash(estudiante.hashed_password)
     return crud.create_estudiante(db=db, estudiante=estudiante)
 
 @estudiante.get("/estudiantes", response_model=list[EstudianteInDB])

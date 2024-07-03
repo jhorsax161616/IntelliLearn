@@ -19,8 +19,13 @@ class EstudianteUpdate(EstudianteBase):
     universidad_id: Optional[int]
     hashed_password: Optional[str]
 
+class EstudianteLogin(BaseModel):
+    correo: str
+    password: str
+
 class EstudianteInDB(EstudianteBase):
     id: Optional[int]
+    hashed_password: str
 
     class Config:
         orm_mode = True

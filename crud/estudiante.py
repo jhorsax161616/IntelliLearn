@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
 from models.Estudiante import Estudiante
-from schemas.estudiante import EstudianteCreate, EstudianteUpdate
+from schemas.estudiante import EstudianteCreate, EstudianteUpdate, EstudianteInDB
 
 def get_estudiante(db: Session, id: int):
     return db.query(Estudiante).filter(Estudiante.id == id).first()
@@ -9,7 +9,7 @@ def get_estudiante(db: Session, id: int):
 def get_estudiantes(db: Session, skip: int = 0, limit: int = 100):
     return db.query(Estudiante).offset(skip).limit(limit).all()
 
-def get_estudiante_by_correo(db: Session, correo: str):
+def get_estudiante_by_correo(db: Session, correo: str) -> EstudianteInDB | None:
     return db.query(Estudiante).filter(Estudiante.correo == correo).first()
 
 def create_estudiante(db: Session, estudiante: EstudianteCreate):

@@ -1,5 +1,5 @@
-from fastapi import FastAPI, Depends, HTTPException
-from sqlalchemy.orm import Session
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -10,6 +10,7 @@ from routes.sala import sala
 from routes.estudiante_sala import estudiante_sala
 from routes.estudiante_logica import estudiante_logica
 from routes.sala_logica import sala_logica
+from routes.login import login
 
 from starlette.requests import Request
 
@@ -29,6 +30,14 @@ app = FastAPI(
     ]
 )
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["*"],
+)
+
 app.include_router(universidad, tags=["Universidades - CRUD"])
 app.include_router(estudiante, tags=["Estudiantes - CRUD"])
 app.include_router(curso, tags=["Cursos - CRUD"])
@@ -36,6 +45,7 @@ app.include_router(sala, tags=["Salas - CRUD"])
 app.include_router(estudiante_sala, tags=["Estudiantes en Salas - CRUD"])
 app.include_router(estudiante_logica, tags=["Lógica de Estudiantes"])
 app.include_router(sala_logica, tags=["Lógica de Salas"])
+app.include_router(login, tags=["Login de Usuarios"])
 
 templates = Jinja2Templates(directory="templates")
 # Montar el directorio de archivos estáticos
